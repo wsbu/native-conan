@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     g++ \
     git-core \
     libtool \
+    lua5.3 \
     make \
     openssh-client \
     pkg-config \
@@ -41,6 +42,9 @@ RUN groupadd --gid 1000 captain \
   && chown --recursive captain:captain "$HOME" \
   && chmod --recursive 777 "$HOME" \
   && echo "ALL ALL=NOPASSWD: ALL" >> /etc/sudoers
+
+# Scripts expect to run via "lua" command
+RUN ln -sf /usr/bin/lua5.3 /usr/bin/lua
 
 COPY start.sh /start.sh
 ENTRYPOINT ["/start.sh"]
