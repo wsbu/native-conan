@@ -18,17 +18,15 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     python-wheel \
     sudo \
     wget \
-  && rm --recursive --force /var/lib/apt/lists/*
+  && rm --recursive --force /var/lib/apt/lists/* \
+  && wget --quiet -O /tmp/cmake.sh https://cmake.org/files/v3.10/cmake-3.10.2-Linux-x86_64.sh \
+    && sh /tmp/cmake.sh --prefix=/usr/local --exclude-subdir --skip-license \
+    && rm /tmp/cmake.sh \
+  && ln -sf /usr/bin/lua5.3 /usr/bin/lua \
+  && pip --no-cache-dir install conan==1.0.4
 
-RUN wget --quiet -O /tmp/cmake.sh https://cmake.org/files/v3.10/cmake-3.10.2-Linux-x86_64.sh \
-  && sh /tmp/cmake.sh --prefix=/usr/local --exclude-subdir --skip-license \
-  && rm /tmp/cmake.sh
-
-ENV HOME=/home/captain
-
-# Install Conan
-RUN pip install conan==1.0.4
-ENV CONAN_PRINT_RUN_COMMANDS=1
+ENV HOME=/home/captain \
+  CONAN_PRINT_RUN_COMMANDS=1
 COPY conan/profile "${HOME}/.conan/profiles/default"
 COPY conan/settings.yml "${HOME}/.conan/settings.yml"
 COPY conan/registry.txt "${HOME}/.conan/registry.txt"
@@ -43,8 +41,6 @@ RUN groupadd --gid 1000 captain \
   && chmod --recursive 777 "$HOME" \
   && echo "ALL ALL=NOPASSWD: ALL" >> /etc/sudoers
 
-# Scripts expect to run via "lua" command
-RUN ln -sf /usr/bin/lua5.3 /usr/bin/lua
 
 COPY start.sh /start.sh
 ENTRYPOINT ["/start.sh"]
