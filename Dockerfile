@@ -27,7 +27,7 @@ RUN wget --quiet -O /tmp/cmake.sh https://cmake.org/files/v3.10/cmake-3.10.2-Lin
 ENV HOME=/home/captain
 
 # Install Conan
-RUN pip install conan==1.0.4
+RUN pip --no-cache-dir install conan==1.0.4
 ENV CONAN_PRINT_RUN_COMMANDS=1
 COPY conan/profile "${HOME}/.conan/profiles/default"
 COPY conan/settings.yml "${HOME}/.conan/settings.yml"
