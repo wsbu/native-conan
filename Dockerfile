@@ -20,11 +20,14 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     sudo \
     wget \
   && rm --recursive --force /var/lib/apt/lists/* \
-  && wget --quiet -O /tmp/cmake.sh https://cmake.org/files/v3.10/cmake-3.10.2-Linux-x86_64.sh \
-    && sh /tmp/cmake.sh --prefix=/usr/local --exclude-subdir --skip-license \
-    && rm /tmp/cmake.sh \
-  && ln -sf /usr/bin/lua5.3 /usr/bin/lua \
-  && pip --no-cache-dir install conan==1.0.4
+  && pip --no-cache-dir install conan==1.0.4 \
+  && ln -sf /usr/bin/lua5.3 /usr/bin/lua
+
+RUN mkdir /src \
+  && wget --quiet -O /src/cmake.sh https://cmake.org/files/v3.10/cmake-3.10.2-Linux-x86_64.sh \
+    && sh /src/cmake.sh --prefix=/usr/local --exclude-subdir --skip-license \
+  && cd / \
+  && rm --recursive --force /src
 
 ENV HOME=/home/captain \
   CONAN_PRINT_RUN_COMMANDS=1
