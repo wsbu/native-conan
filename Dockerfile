@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     flex \
     g++ \
     git-core \
+    inotify-tools \
     libtool \
     lua5.3 \
     make \
