@@ -11,6 +11,8 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     ca-certificates \
     ccache \
     curl \
+    docbook-xml \
+    docbook-xsl \
     fakeroot \
     flex \
     g++ \
@@ -45,7 +47,9 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     texinfo \
     u-boot-tools \
     uuid-dev \
+    w3m \
     wget \
+    xsltproc \
     xutils-dev \
     xz-utils \
     zip \
