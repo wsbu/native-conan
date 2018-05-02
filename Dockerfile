@@ -20,6 +20,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     gcc \
     gettext \
     git-core \
+    golang-1.10 \
     gperf \
     groff \
     inotify-tools \
@@ -58,7 +59,10 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
   && pip --no-cache-dir install conan==1.3.0 \
   && ln -sf /bin/bash /bin/sh \
   && ln -sf /usr/bin/lua5.3 /usr/bin/lua \
-  && ln -sf /usr/bin/nodejs /usr/bin/node
+  && ln -sf /usr/bin/nodejs /usr/bin/node \
+  && ln -sf /usr/lib/go-1.10/bin/gofmt /usr/bin/gofmt \
+  && ln -sf /usr/lib/go-1.10/bin/go /usr/bin/go
+
 
 RUN mkdir /src \
   && wget --quiet -O /src/cmake.sh https://cmake.org/files/v3.10/cmake-3.10.2-Linux-x86_64.sh \
