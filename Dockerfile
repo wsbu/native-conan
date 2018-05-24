@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     curl \
     docbook-xml \
     docbook-xsl \
+    doxygen \
     fakeroot \
     flex \
     g++ \
@@ -22,6 +23,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     git-core \
     golang-1.10 \
     gperf \
+    graphviz \
     groff \
     inotify-tools \
     intltool \
@@ -35,6 +37,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     make \
     net-tools \
     nodejs \
+    npm \
     openssh-client \
     pkg-config \
     python \
@@ -56,6 +59,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     zip \
     zlib1g-dev \
   && rm --recursive --force /var/lib/apt/lists/* \
+  && npm install -g showdown \
   && pip --no-cache-dir install conan==1.3.0 \
   && ln -sf /bin/bash /bin/sh \
   && ln -sf /usr/bin/lua5.3 /usr/bin/lua \
