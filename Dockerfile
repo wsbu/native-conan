@@ -67,9 +67,11 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
   && ln -sf /usr/lib/go-1.10/bin/gofmt /usr/bin/gofmt \
   && ln -sf /usr/lib/go-1.10/bin/go /usr/bin/go
 
+# Major.Minor version common to install URL and install destination
+ARG CMAKE_VERSION=3.10
 
 RUN mkdir /src \
-  && wget --quiet -O /src/cmake.sh https://cmake.org/files/v3.10/cmake-3.10.2-Linux-x86_64.sh \
+  && wget --quiet -O /src/cmake.sh https://cmake.org/files/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}.2-Linux-x86_64.sh \
     && sh /src/cmake.sh --prefix=/usr/local --exclude-subdir --skip-license \
   && git clone https://github.com/wsbu/cross-browser.git \
       --branch x419_z1 --depth 1 /src/crossbrowser \
@@ -96,6 +98,7 @@ ENV HOME=/home/captain \
 COPY conan/profile "${HOME}/.conan/profiles/default"
 COPY conan/settings.yml "${HOME}/.conan/settings.yml"
 COPY conan/registry.txt "${HOME}/.conan/registry.txt"
+COPY FindGMock.cmake "/usr/local/share/cmake-${CMAKE_VERSION}/Modules"
 
 RUN groupadd --gid 1000 captain \
   && useradd --home-dir "$HOME" \
