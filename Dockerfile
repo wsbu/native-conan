@@ -60,7 +60,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     zlib1g-dev \
   && rm --recursive --force /var/lib/apt/lists/* \
   && npm install -g showdown \
-  && pip --no-cache-dir install conan==1.3.0 \
+  && pip --no-cache-dir install conan==1.4.4 \
   && ln -sf /bin/bash /bin/sh \
   && ln -sf /usr/bin/lua5.3 /usr/bin/lua \
   && ln -sf /usr/bin/nodejs /usr/bin/node \
