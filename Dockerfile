@@ -63,7 +63,6 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
   && pip --no-cache-dir install conan==1.4.4 \
   && ln -sf /bin/bash /bin/sh \
   && ln -sf /usr/bin/lua5.3 /usr/bin/lua \
-  && ln -sf /usr/bin/nodejs /usr/bin/node \
   && ln -sf /usr/lib/go-1.10/bin/gofmt /usr/bin/gofmt \
   && ln -sf /usr/lib/go-1.10/bin/go /usr/bin/go
 
