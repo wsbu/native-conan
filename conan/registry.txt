@@ -1,0 +1,2 @@
+conan-center https://conan.bintray.com True
+ci http://ci.redlion.net:8040/artifactory/api/conan/conan-local True
