@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [ ! -s "${HOME}/.conan/registry.txt" ] ; then
+    cat "${HOME}/.conan/registry.template.txt" >> "${HOME}/.conan/registry.txt"
+fi
+
 if [ "${uid}" -a "${gid}" ] ; then
     set -e
     user_name=$(basename ${HOME})
