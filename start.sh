@@ -19,9 +19,10 @@ if [ "${uid}" -a "${gid}" ] ; then
             ${user_name}
     fi
     if ((1000 != ${uid} || 1000 != ${gid} )) ; then
-        chown ${uid}:${gid} $HOME
-        chown ${uid}:${gid} $HOME/.ssh
+        chown ${uid}:${gid} "${HOME}"
+        chown ${uid}:${gid} "${HOME}/.ssh"
     fi
+    chown ${uid}:${gid} "${HOME}/.conan/registry.txt"
     su_cmd="sudo --preserve-env --user ${user_name}"
     set +e
 fi
