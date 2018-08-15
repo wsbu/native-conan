@@ -45,6 +45,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     python-pip \
     python-setuptools \
     python-wheel \
+    python3.6 \
     rsync \
     scons \
     sudo \
