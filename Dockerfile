@@ -60,7 +60,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     zlib1g-dev \
   && rm --recursive --force /var/lib/apt/lists/* \
   && npm install -g showdown \
-  && pip --no-cache-dir install conan==1.4.4 \
+  && pip --no-cache-dir install conan==1.6.1 \
   && ln -sf /bin/bash /bin/sh \
   && ln -sf /usr/bin/lua5.3 /usr/bin/lua \
   && ln -sf /usr/lib/go-1.10/bin/gofmt /usr/bin/gofmt \
@@ -68,7 +68,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
 
 
 RUN mkdir /src \
-  && wget --quiet -O /src/cmake.sh https://cmake.org/files/v3.10/cmake-3.10.2-Linux-x86_64.sh \
+  && wget --quiet -O /src/cmake.sh https://cmake.org/files/v3.12/cmake-3.12.1-Linux-x86_64.sh \
     && sh /src/cmake.sh --prefix=/usr/local --exclude-subdir --skip-license \
   && git clone https://github.com/wsbu/cross-browser.git \
       --branch x419_z1 --depth 1 /src/crossbrowser \
@@ -97,13 +97,11 @@ COPY conan/settings.yml "${HOME}/.conan/settings.yml"
 COPY conan/registry.txt "${HOME}/.conan/registry.template.txt"
 
 RUN groupadd --gid 1000 captain \
-  && useradd --home-dir "$HOME" \
-    --uid 1000 --gid 1000 \
-    captain \
-  && mkdir --parents \
-    $HOME/.ssh \
-  && chown --recursive captain:captain "$HOME" \
-  && chmod --recursive 777 "$HOME" \
+  && useradd --home-dir "${HOME}" --uid 1000 --gid 1000 captain \
+  && mkdir --parents "${HOME}/.ssh" \
+  && cp /root/.bashrc /root/.profile "${HOME}" \
+  && chown --recursive captain:captain "${HOME}" \
+  && chmod --recursive 777 "${HOME}" \
   && echo "ALL ALL=NOPASSWD: ALL" >> /etc/sudoers
 
 
