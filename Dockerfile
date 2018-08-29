@@ -64,7 +64,9 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
   && ln -sf /bin/bash /bin/sh \
   && ln -sf /usr/bin/lua5.3 /usr/bin/lua \
   && ln -sf /usr/lib/go-1.10/bin/gofmt /usr/bin/gofmt \
-  && ln -sf /usr/lib/go-1.10/bin/go /usr/bin/go
+  && ln -sf /usr/lib/go-1.10/bin/go /usr/bin/go \
+  && wget https://github.com/golang/dep/releases/download/v0.5.0/dep-linux-amd64 -O /usr/local/bin/dep \
+  && chmod +x /usr/local/bin/dep
 
 
 RUN mkdir /src \
