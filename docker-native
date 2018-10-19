@@ -20,5 +20,4 @@ docker run -it --rm \
     -v "${dir}:/opt/project" \
     -v "$HOME/.conan/data:/home/captain/.conan/data" \
     -v "$HOME/.conan/.conan.db:/home/captain/.conan/.conan.db" \
-    wsbu/toolchain-native:v0.1.4 "$@"
-
+    wsbu/toolchain-native:v0.1.6 "$@"
