@@ -49,6 +49,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     scons \
     sudo \
     texinfo \
+    time \
     u-boot-tools \
     uuid-dev \
     w3m \
