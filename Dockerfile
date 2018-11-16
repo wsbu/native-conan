@@ -96,7 +96,6 @@ ENV HOME=/home/captain \
   CONAN_PRINT_RUN_COMMANDS=1
 COPY conan/profile "${HOME}/.conan/profiles/default"
 COPY conan/settings.yml "${HOME}/.conan/settings.yml"
-COPY conan/registry.txt "${HOME}/.conan/registry.template.txt"
 
 RUN groupadd --gid 1000 captain \
   && useradd --home-dir "${HOME}" --uid 1000 --gid 1000 captain \
