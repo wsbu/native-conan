@@ -13,13 +13,13 @@ touch ~/.conan/registry.json
 set -x
 docker run -it --rm \
     --net=host \
-    -w "/opt/project" \
     -e uid="${uid}" \
     -e gid="${gid}" \
     -v "$HOME/.ssh/id_rsa:/home/captain/.ssh/id_rsa" \
     -v "$HOME/.ssh/known_hosts:/home/captain/.ssh/known_hosts" \
-    -v "${dir}:/opt/project" \
     -v "$HOME/.conan/data:/home/captain/.conan/data" \
     -v "$HOME/.conan/registry.json:/home/captain/.conan/registry.json" \
     -v "$HOME/.conan/.conan.db:/home/captain/.conan/.conan.db" \
+    -v "${dir}:${dir}" \
+    -w "${dir}" \
     wsbu/toolchain-native:v0.3.0 "$@"

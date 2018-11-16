@@ -1,3 +1,0 @@
-conan-center https://conan.bintray.com True
-ci https://artifactory.redlion.net/artifactory/api/conan/conan-local True
-bintray-community https://api.bintray.com/conan/conan-community/conan True

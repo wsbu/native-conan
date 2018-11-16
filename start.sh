@@ -3,12 +3,6 @@
 # Note: set user using `--env uid=XXXX --env gid=XXXX`, instead of using
 # docker's `--user` flag
 
-if [[ ! -s "${HOME}/.conan/registry.json" ]] ; then
-    conan remote add ci "https://artifactory.redlion.net/artifactory/api/conan/conan-local"
-    conan remote add conan-center "https://conan.bintray.com"
-    conan remote add bintray-community "https://api.bintray.com/conan/conan-community/conan"
-fi
-
 if [[ "${uid}" && "${gid}" ]] ; then
     set -e
     if ! grep --quiet ":${gid}:" /etc/group; then
