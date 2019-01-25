@@ -22,4 +22,4 @@ docker run -it --rm \
     -v "$HOME/.conan/.conan.db:/home/captain/.conan/.conan.db" \
     -v "${dir}:${dir}" \
     -w "${dir}" \
-    wsbu/toolchain-native:v0.3.0 "$@"
+    wsbu/toolchain-native:v0.3.1 "$@"
