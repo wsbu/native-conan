@@ -20,8 +20,10 @@ if [[ "${uid}" && "${gid}" ]] ; then
         chown ${uid}:${gid} "${HOME}"
         chown ${uid}:${gid} "${HOME}/.ssh"
     fi
-    chown ${uid}:${gid} "${HOME}/.conan/registry.json"
-    su_cmd="sudo --preserve-env --user #${uid} --group #${gid}"
+    if [[ -f "${HOME}/.conan/registry.json" || -L "${HOME}/.conan/registry.json" ]] ; then
+        chown ${uid}:${gid} "${HOME}/.conan/registry.json"
+    fi
+    su_cmd="sudo --preserve-env --user #${uid} --group #${gid} --"
     set +e
 fi
 
