@@ -11,7 +11,6 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     ca-certificates \
     ccache \
     curl \
-    docbook-utils \
     docbook-xml \
     docbook-xsl \
     doxygen \
@@ -40,11 +39,10 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     npm \
     openssh-client \
     pkg-config \
-    python \
-    python-m2crypto \
-    python-pip \
-    python-setuptools \
-    python-wheel \
+    python3 \
+    python3-pip \
+    python3-setuptools \
+    python3-wheel \
     rsync \
     scons \
     sudo \
@@ -61,7 +59,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     zlib1g-dev \
   && rm --recursive --force /var/lib/apt/lists/* \
   && npm install -g showdown \
-  && pip --no-cache-dir install conan==1.14.1 \
+  && pip3 --no-cache-dir install conan==1.14.1 \
   && ln -sf /bin/bash /bin/sh \
   && ln -sf /usr/bin/lua5.3 /usr/bin/lua \
   && ln -sf /usr/lib/go-1.10/bin/gofmt /usr/bin/gofmt \
