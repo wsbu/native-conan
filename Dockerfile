@@ -59,7 +59,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     zlib1g-dev \
   && rm --recursive --force /var/lib/apt/lists/* \
   && npm install -g showdown \
-  && pip3 --no-cache-dir install conan==1.14.1 \
+  && pip3 --no-cache-dir install conan==1.15.1 \
   && ln -sf /bin/bash /bin/sh \
   && ln -sf /usr/bin/lua5.3 /usr/bin/lua \
   && ln -sf /usr/lib/go-1.10/bin/gofmt /usr/bin/gofmt \
@@ -69,7 +69,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
 
 
 RUN mkdir /src \
-  && wget --quiet -O /src/cmake.sh https://github.com/Kitware/CMake/releases/download/v3.14.1/cmake-3.14.1-Linux-x86_64.sh \
+  && wget --quiet -O /src/cmake.sh https://github.com/Kitware/CMake/releases/download/v3.14.4/cmake-3.14.4-Linux-x86_64.sh \
     && sh /src/cmake.sh --prefix=/usr/local --exclude-subdir --skip-license \
   && git clone https://github.com/wsbu/cross-browser.git \
       --branch x419_z1 --depth 1 /src/crossbrowser \
