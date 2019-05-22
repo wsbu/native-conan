@@ -99,3 +99,7 @@ RUN groupadd --gid 1000 captain \
 
 COPY start.sh /start.sh
 ENTRYPOINT ["/start.sh"]
+
+LABEL "net.redlion.family"="controller"
+LABEL "net.redlion.controller.platform"="x86_64"
+LABEL "net.redlion.controller.image"="toolchain"
