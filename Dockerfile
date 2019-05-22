@@ -34,6 +34,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     libxml2-utils \
     lua5.3 \
     make \
+    mtd-utils \
     net-tools \
     nodejs \
     npm \
@@ -80,16 +81,7 @@ RUN mkdir /src \
     && strip /bin/xc \
     && mkdir --parents /lib/crossbrowser \
     && cp --archive /src/crossbrowser/x/lib/*.js /lib/crossbrowser \
-    && cp --archive /src/crossbrowser/x/lib/old/*.js /lib/crossbrowser \
-  && git clone https://github.com/wsbu/mtd-utils.git \
-      --branch v2.0.1  --depth 1 /src/mtd-utils \
-    && cd /src/mtd-utils \
-    && ./autogen.sh \
-    && ./configure \
-    && make \
-    && make install \
-  && cd / \
-  && rm --recursive --force /src
+    && cp --archive /src/crossbrowser/x/lib/old/*.js /lib/crossbrowser
 
 ENV HOME=/home/captain \
   CONAN_PRINT_RUN_COMMANDS=1
