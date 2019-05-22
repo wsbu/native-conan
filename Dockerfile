@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     ca-certificates \
     ccache \
     curl \
+    docbook-utils \
     docbook-xml \
     docbook-xsl \
     doxygen \
@@ -22,7 +23,6 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     gettext \
     git-core \
     golang-1.10 \
-    gperf \
     graphviz \
     groff \
     inotify-tools \
@@ -49,6 +49,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     scons \
     sudo \
     texinfo \
+    time \
     u-boot-tools \
     uuid-dev \
     w3m \
