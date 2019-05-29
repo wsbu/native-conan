@@ -11,7 +11,6 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     ca-certificates \
     ccache \
     curl \
-    docbook-utils \
     docbook-xml \
     docbook-xsl \
     doxygen \
@@ -35,16 +34,16 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     libxml2-utils \
     lua5.3 \
     make \
+    mtd-utils \
     net-tools \
     nodejs \
     npm \
     openssh-client \
     pkg-config \
-    python \
-    python-m2crypto \
-    python-pip \
-    python-setuptools \
-    python-wheel \
+    python3 \
+    python3-pip \
+    python3-setuptools \
+    python3-wheel \
     rsync \
     scons \
     sudo \
@@ -61,7 +60,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     zlib1g-dev \
   && rm --recursive --force /var/lib/apt/lists/* \
   && npm install -g showdown \
-  && pip --no-cache-dir install conan==1.14.1 \
+  && pip3 --no-cache-dir install conan==1.15.1 \
   && ln -sf /bin/bash /bin/sh \
   && ln -sf /usr/bin/lua5.3 /usr/bin/lua \
   && ln -sf /usr/lib/go-1.10/bin/gofmt /usr/bin/gofmt \
@@ -71,7 +70,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
 
 
 RUN mkdir /src \
-  && wget --quiet -O /src/cmake.sh https://github.com/Kitware/CMake/releases/download/v3.14.1/cmake-3.14.1-Linux-x86_64.sh \
+  && wget --quiet -O /src/cmake.sh https://github.com/Kitware/CMake/releases/download/v3.14.4/cmake-3.14.4-Linux-x86_64.sh \
     && sh /src/cmake.sh --prefix=/usr/local --exclude-subdir --skip-license \
   && git clone https://github.com/wsbu/cross-browser.git \
       --branch x419_z1 --depth 1 /src/crossbrowser \
@@ -82,16 +81,7 @@ RUN mkdir /src \
     && strip /bin/xc \
     && mkdir --parents /lib/crossbrowser \
     && cp --archive /src/crossbrowser/x/lib/*.js /lib/crossbrowser \
-    && cp --archive /src/crossbrowser/x/lib/old/*.js /lib/crossbrowser \
-  && git clone https://github.com/wsbu/mtd-utils.git \
-      --branch v2.0.1  --depth 1 /src/mtd-utils \
-    && cd /src/mtd-utils \
-    && ./autogen.sh \
-    && ./configure \
-    && make \
-    && make install \
-  && cd / \
-  && rm --recursive --force /src
+    && cp --archive /src/crossbrowser/x/lib/old/*.js /lib/crossbrowser
 
 ENV HOME=/home/captain \
   CONAN_PRINT_RUN_COMMANDS=1
@@ -109,3 +99,7 @@ RUN groupadd --gid 1000 captain \
 
 COPY start.sh /start.sh
 ENTRYPOINT ["/start.sh"]
+
+LABEL "net.redlion.family"="controller"
+LABEL "net.redlion.controller.platform"="x86_64"
+LABEL "net.redlion.controller.image"="toolchain"
