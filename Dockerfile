@@ -60,7 +60,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     zlib1g-dev \
   && rm --recursive --force /var/lib/apt/lists/* \
   && npm install -g showdown \
-  && pip3 --no-cache-dir install conan==1.15.1 \
+  && pip3 --no-cache-dir install conan==1.16.0 \
   && ln -sf /bin/bash /bin/sh \
   && ln -sf /usr/bin/lua5.3 /usr/bin/lua \
   && ln -sf /usr/lib/go-1.10/bin/gofmt /usr/bin/gofmt \
@@ -92,6 +92,7 @@ RUN groupadd --gid 1000 captain \
   && useradd --home-dir "${HOME}" --uid 1000 --gid 1000 captain \
   && mkdir --parents "${HOME}/.ssh" \
   && cp /root/.bashrc /root/.profile "${HOME}" \
+  && conan config set general.revisions_enabled=True \
   && chown --recursive captain:captain "${HOME}" \
   && chmod --recursive 777 "${HOME}" \
   && echo "ALL ALL=NOPASSWD: ALL" >> /etc/sudoers
