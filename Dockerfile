@@ -19,6 +19,8 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     g++ \
     gawk \
     gcc \
+    gcov \
+    gcovr \
     gettext \
     git-core \
     golang-1.10 \
