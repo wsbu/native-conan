@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     bison \
     ca-certificates \
     ccache \
+    clang-tidy \
     curl \
     docbook-xml \
     docbook-xsl \
@@ -62,7 +63,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     zlib1g-dev \
   && rm --recursive --force /var/lib/apt/lists/* \
   && npm install -g showdown \
-  && pip3 --no-cache-dir install conan==1.20.3 \
+  && pip3 --no-cache-dir install conan==1.21.0 \
   && ln -sf /bin/bash /bin/sh \
   && ln -sf /usr/bin/lua5.3 /usr/bin/lua \
   && ln -sf /usr/lib/go-1.10/bin/gofmt /usr/bin/gofmt \
